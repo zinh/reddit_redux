@@ -1,5 +1,5 @@
-import { getPosts } from '../reddit'
-import { LOAD_POSTS_SUCCESS } from './actionTypes'
+import { getPosts, getComments } from '../reddit'
+import { LOAD_POSTS_SUCCESS, LOAD_COMMENTS_SUCCESS } from './actionTypes'
 
 export const LOAD_POSTS = "LOAD_POSTS"
 export const CHANGE_SUB = "CHANGE_SUB"
@@ -12,10 +12,18 @@ export function loadPosts(subName){
   }
 }
 
-export function loadPostsSuccess(posts){
+function loadPostsSuccess(posts){
   return {type: LOAD_POSTS_SUCCESS, posts: posts}
 }
 
-export function appendPost(post){
-  return {type: APPEND_POST, post: post}
+export function loadComments(postId){
+  return function(dispatch){
+    getComments(postId).then(comments => {
+      dispatch(loadCommentsSuccess(comments))
+    })
+  }
+}
+
+export function loadCommentsSuccess(comments){
+  return {type: LOAD_COMMENTS_SUCCESS, comments: comments}
 }

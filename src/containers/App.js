@@ -1,17 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Post from '../components/Post'
-let App = ({ posts }) => {
-  if (posts){
-    return (<ul> { posts.map((post, idx) => (<Post post={post} key={idx}/>)) } </ul>)
-  } else {
-    return (<div>No post</div>)
-  }
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import Posts from './Posts'
+import Comments from './Comments'
+
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Link to="/">Home</Link><br/>
+        <Link to="/r/askReddit">ASKREDDIT</Link><br/>
+        <Link to="/r/funny">FUNNY</Link><br/>
+        <Link to="/r/pics">PICS</Link><br/>
+        <Link to="/r/gifs">GIFS</Link>
+        <Route exact path="/" component={Posts} />
+        <Route path="/r/:subName" component={Posts} />
+        <Route path="/post/:postId" component={Comments} />
+      </div>
+    </Router>
+  )
 }
 
-function mapStateToProps(state){
-  return { posts: state.posts }
-}
-
-App = connect(mapStateToProps)(App)
 export default App

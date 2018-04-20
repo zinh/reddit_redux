@@ -1,4 +1,4 @@
-import { LOAD_POSTS_SUCCESS, APPEND_POST } from '../actions/actionTypes'
+import { LOAD_POSTS_SUCCESS, APPEND_POST, LOAD_COMMENTS_SUCCESS } from '../actions/actionTypes'
 import { combineReducers } from 'redux'
 
 const posts = (state, action) => {
@@ -12,4 +12,16 @@ const posts = (state, action) => {
   }
 }
 
-export default combineReducers({posts})
+const comments = (state, action) => {
+  switch (action.type) {
+    case LOAD_COMMENTS_SUCCESS:
+      return {
+      post: action.comments[0],
+      comments: action.comments[1]
+    }
+    default:
+      return {}
+  }
+}
+
+export default combineReducers({posts, comments})

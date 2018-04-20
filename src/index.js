@@ -7,7 +7,7 @@ import configureStore from './store/configureStore'
 
 const store = configureStore()
 
-store.dispatch(loadPosts('askReddit'))
+// store.dispatch(loadPosts('askReddit'))
 
 render (
   <Provider store={store}>

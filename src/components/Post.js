@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Post = ({post}) => (
-  <li><a href={post.data.url}>{post.data.title}</a></li>
+  <li><Link to={`/post/${post.id}`}>{post.title}</Link></li>
 )
 
 export default Post
