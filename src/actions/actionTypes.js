@@ -1,0 +1,2 @@
+export const LOAD_POSTS_SUCCESS = "LOAD_POSTS_SUCCESS"
+export const APPEND_POST = "APPEND_POST"
