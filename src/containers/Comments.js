@@ -15,6 +15,7 @@ class Comments extends React.Component {
     if (comments){
       return (<div>
         <b>{post.data.children[0].data.title}</b>
+        <a href={post.data.children[0].data.url}><img src={post.data.children[0].data.thumbnail}></img></a>
         { comments.data.children.map((comment, idx) => <Comment comment={comment} key={idx}/>) }
       </div>)
     } else {

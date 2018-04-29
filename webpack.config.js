@@ -4,7 +4,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-      { test: /\.html$/, loader: "html-loader", options: { minimize: true }}
+      { test: /\.html$/, exclude: /node_modules/, loader: "html-loader", options: { minimize: true }}
     ]
   },
   plugins: [

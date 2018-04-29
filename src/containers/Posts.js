@@ -6,18 +6,20 @@ class Posts extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      loaded: false
+      currentSub: props.match.params.subName
     }
   }
 
   componentDidMount(){
-    this.reloadPosts(this.props.match.params.subName)
+    this.reloadPosts(this.state.currentSub)
   }
 
-  // componentWillReceiveProps(newProps){
-  //   console.log(newProps)
-  //   this.reloadPosts(newProps.match.params.subName)
-  // }
+  componentWillReceiveProps(newProps){
+    if (this.state.currentSub != newProps.match.params.subName){
+      this.reloadPosts(newProps.match.params.subName)
+      this.setState({ currentSub: newProps.match.params.subName })
+    }
+  }
 
   reloadPosts(subName) {
     if (subName){
