@@ -7,7 +7,13 @@ class Comments extends React.Component {
   constructor(props){
     super(props)
     let postId = props.match.params.postId
-    props.getPostDetail(postId)
+    this.state = {
+      currentPostId: postId
+    }
+  }
+
+  componentDidMount(){
+    this.props.getPostDetail(this.state.currentPostId)
   }
 
   render(){

@@ -6,3 +6,9 @@ exports.getPosts = (subName) => {
     .then(res => res.data.data.children.map(post => 
       ({ data: {title: post.data.title, id: post.data.id }})))
 }
+
+exports.getComments = (postId) => {
+  const endpoint = `https://www.reddit.com/comments/${postId}.json`
+  return http.get(endpoint)
+    .then(res => res.data)
+}
