@@ -1,17 +1,15 @@
 import React from 'react'
-import { render } from 'react-dom'
+import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
 import { loadPosts, appendPost } from './actions'
-import App from './containers/App'
+import AppRoute from './containers/AppRoute'
 import configureStore from './store/configureStore'
 
 const store = configureStore()
 
-// store.dispatch(loadPosts('askReddit'))
-
-render (
+hydrate (
   <Provider store={store}>
-    <App/>
+    <AppRoute />
   </Provider>,
   document.getElementById("root")
 )

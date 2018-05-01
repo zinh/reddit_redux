@@ -12,7 +12,7 @@ export function loadPosts(subName){
   }
 }
 
-function loadPostsSuccess(posts){
+export function loadPostsSuccess(posts){
   return {type: LOAD_POSTS_SUCCESS, posts: posts}
 }
 
